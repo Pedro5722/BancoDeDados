@@ -1,0 +1,39 @@
+
+//1- Utilizar o comando ALTER e DROP para alterar a estrutura das tabelas do banco (ao menos um exemplo de cada comando).
+//INSERIR
+
+INSERT INTO JOGOS VALUE ( 14,'The Elder Scrolls V: Skyrim','17','98','RPG de ação','X BOX',59.88);
+
+//ATUALIZAR
+
+ALTER TABLE ENDERECO_CLIENTE ALTER RUA set DEFAULT 'R';
+
+//DELETAR
+
+ALTER TABLE JOGOS DROP NOTA_CRI;
+
+delete from CLIENTE where id = 3 ;
+
+//CONSULTAR
+
+//2- Utilizar SQL para INSERIR, ATUALIZAR, DELETAR e CONSULTAR informações neste banco de dados - Para as consultas utilizar as condições (Between, like, in, order by, etc) e também utilizar JOIN
+
+//A- Buscar o nome e telefone de todos os clientes, ordenar por nome em ordem decrescente e por telefone em ordem crescente
+
+select NOME, DT_NASC DATE from cliente
+order by NOME desc, DT_NASC asc;
+
+//B- Buscar o nome e a plataforma dos jogos em que a faixa etária esteja entre 12 e 16
+
+select NOME, PLATAFORMA from JOGOS where FX_ETARIA between 12 and 16;
+
+//C- Mostrar todos os jogos onde o seu nome começa por "The".
+
+select * from JOGOS where NOME like 'the%';
+
+//D- Buscar os jogos de interesse aos clientes de acordo com sua plataforma utilizada.
+
+SELECT a.NOME , b.NOME
+from CLIENTE as A
+inner join JOGOS as B
+on a.plataforma = b.plataforma;
